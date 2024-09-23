@@ -8,6 +8,9 @@ from circleshape import CircleShape
 from shot import Shot
 
 def main():
+    print("Starting asteroids!")
+    print(f"Screen width: {SCREEN_WIDTH}")
+    print(f"Screen height: {SCREEN_HEIGHT}")
     pygame.init()
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     clock = pygame.time.Clock()
@@ -43,7 +46,7 @@ def main():
             for asteroid in asteroids_group:
                 if shot.is_colliding(asteroid):
                     shot.kill()
-                    asteroid.kill()
+                    asteroid.split()
 
         screen.fill("black")
 
@@ -53,9 +56,7 @@ def main():
         pygame.display.flip()
         dt = clock.tick(60) / 1000
 
-    print("Starting asteroids!")
-    print(f"Screen width: {SCREEN_WIDTH}")
-    print(f"Screen height: {SCREEN_HEIGHT}")
+    
 
 if __name__ == "__main__":
     main()
